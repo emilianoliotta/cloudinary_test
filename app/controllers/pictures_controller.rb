@@ -11,7 +11,7 @@ class PicturesController < ApplicationController
 	def create
 		file = params[:picture][:url]
 		hash = Cloudinary::Uploader.upload(file)
-		new_url = hash["url"]
+		new_url = hash["secure_url"]
 		@picture = Picture.new
 		@picture.url = new_url
 		@picture.save
